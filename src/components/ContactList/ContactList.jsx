@@ -13,7 +13,7 @@ class ContactList extends Component {
             contactsFilter.map(({ id, name, number }) => {
               return (
                 <li key={id} className={style.item}>
-                  <span className="contact-name">{name + ": "}</span>
+                  <span className="contact-name">{name + ': '}</span>
                   {number}
                   <button
                     className={style.delete__btn}

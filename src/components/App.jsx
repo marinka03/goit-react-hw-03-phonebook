@@ -42,7 +42,7 @@ class App extends Component {
     const filterByName = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
- 
+
     return (
       <div
         style={{
