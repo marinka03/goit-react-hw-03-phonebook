@@ -14,6 +14,18 @@ class App extends Component {
     ],
     filter: '',
   };
+  componentDidMount(){
+    if(localStorage.getItem('contacts')){
+      // console.log(JSON.parse(localStorage.getItem('contacts')))
+      const checkStorage = JSON.parse(localStorage.getItem('contacts'))
+      this.setState({contacts: checkStorage})
+    }
+  }
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.contacts !== this.state.contacts){
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    }
+  }
 
   handleAddContact = contactFromForm => {
     const newContact = { id: nanoid(), ...contactFromForm };
@@ -22,6 +34,7 @@ class App extends Component {
       : this.setState(state => ({
           contacts: [...state.contacts, newContact],
         }));
+        // localStorage.setItem("contacts", JSON.stringify(this.state.contacts))
   };
   checkNewContact = contactName => {
     return this.state.contacts.some(contact => contact.name === contactName);
